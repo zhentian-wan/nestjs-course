@@ -6,11 +6,15 @@ import {
   Body,
   Delete,
   Post,
+  BadRequestException,
+  UseFilters,
 } from '@nestjs/common';
 import { Course } from '../../../../shared/course';
 import { CoursesRepository } from '../repositories/courses.repository';
+import { HttpExceptionFilter } from '../../filters/http-exception.filter';
 
 @Controller('courses')
+@UseFilters(new HttpExceptionFilter())
 export class CoursesController {
   constructor(private couresDB: CoursesRepository) {}
 
@@ -29,6 +33,10 @@ export class CoursesController {
     @Param('courseId') courseId: string,
     @Body() changes: Partial<Course>,
   ): Promise<Course> {
+    if (changes._id) {
+      throw new BadRequestException('Cannot update course id');
+    }
+
     return this.couresDB.updateCourse(courseId, changes);
   }
 
