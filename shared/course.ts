@@ -1,14 +1,21 @@
-export interface Course {
+import { IsMongoId, IsString, IsBoolean, IsInt } from "class-validator";
+
+export class Course {
+  @IsString()
+  @IsMongoId()
   _id: string;
+
+  @IsInt({ message: "seqNo must be numeric" })
   seqNo: number;
-  url: string;
-  iconUrl: string;
-  courseListIcon: string;
-  description: string;
-  longDescription: string;
-  category: string;
-  lessonsCount: number;
-  promo: boolean;
+  // always false, no need to be always applied the rule
+  @IsString({ always: false }) url: string;
+  @IsString() iconUrl: string;
+  @IsString() courseListIcon: string;
+  @IsString() description: string;
+  @IsString() longDescription: string;
+  @IsString() category: string;
+  @IsInt() lessonsCount: number;
+  @IsBoolean() promo: boolean;
 }
 
 export function compareCourses(c1: Course, c2: Course) {

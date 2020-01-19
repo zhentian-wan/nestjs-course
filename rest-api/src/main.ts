@@ -4,6 +4,10 @@ import { AppModule } from './app.module';
 import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { FallbackExpectionFilter } from './filters/fallback.filter';
 
+import * as mongoose from 'mongoose';
+
+mongoose.set('useFindAndModify', false);
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
