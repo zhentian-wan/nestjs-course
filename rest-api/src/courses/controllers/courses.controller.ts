@@ -11,10 +11,8 @@ import {
 } from '@nestjs/common';
 import { Course } from '../../../../shared/course';
 import { CoursesRepository } from '../repositories/courses.repository';
-import { HttpExceptionFilter } from '../../filters/http-exception.filter';
 
 @Controller('courses')
-@UseFilters(new HttpExceptionFilter())
 export class CoursesController {
   constructor(private couresDB: CoursesRepository) {}
 
