@@ -1,33 +1,33 @@
-<mat-sidenav-container fullscreen>
-
+<main [ngClass]="{ 'dark-theme': dark }">
+  <mat-sidenav-container fullscreen>
     <mat-sidenav #start>
-        <mat-nav-list (click)="start.close()">
+      <mat-nav-list (click)="start.close()">
+        <a mat-list-item routerLink="/courses">
+          <mat-icon>library_books</mat-icon>
+          <span>Courses</span>
+        </a>
 
-            <a mat-list-item routerLink="/courses">
-                <mat-icon>library_books</mat-icon>
-                <span>Courses</span>
-            </a>
+        <a mat-list-item routerLink="/login">
+          <mat-icon>account_circle</mat-icon>
+          <span>Login</span>
+        </a>
 
-            <a mat-list-item routerLink="/login">
-                <mat-icon>account_circle</mat-icon>
-                <span>Login</span>
-            </a>
-
-            <a mat-list-item  (click)="logout()">
-                <mat-icon>exit_to_app</mat-icon>
-                <span>Logout</span>
-            </a>
-
-        </mat-nav-list>
-
+        <a mat-list-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </a>
+      </mat-nav-list>
     </mat-sidenav>
 
     <mat-toolbar color="primary">
-        <button class="menu-button" mat-icon-button (click)="start.open('mouse')">
-            <mat-icon>menu</mat-icon>
-        </button>
+      <button class="menu-button" mat-icon-button (click)="start.open('mouse')">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button mat-button (click)="dark = !dark">
+        Dark
+      </button>
     </mat-toolbar>
 
     <router-outlet></router-outlet>
-
-</mat-sidenav-container>
+  </mat-sidenav-container>
+</main>

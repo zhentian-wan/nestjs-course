@@ -1,13 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-
-
+// include all the scss
 @import "~@angular/material/theming";
 
 // Include non-theme styles for core.
 @include mat-core();
 
-$mat-custom-theme:  (
+$mat-custom-primary-theme: (
   50: #ffebee,
   100: #ffcdd2,
   200: #ef9a9a,
@@ -36,20 +35,24 @@ $mat-custom-theme:  (
     A100: $dark-primary-text,
     A200: $light-primary-text,
     A400: $light-primary-text,
-    A700: $light-primary-text,
+    A700: $light-primary-text
   )
 );
 
-
 // Define a theme.
-$primary: mat-palette($mat-custom-theme);
-$accent:  mat-palette($mat-pink, A200, A100, A400);
+$primary: mat-palette($mat-custom-primary-theme);
+$accent: mat-palette($mat-pink, A200, A100, A400);
 
 $theme: mat-light-theme($primary, $accent);
 
 // Include all theme styles for the components.
 @include angular-material-theme($theme);
 
+// Our dark theme
+.dark-theme {
+  $theme: mat-dark-theme($primary, $accent);
+  @include angular-material-theme($theme);
+}
 
 .spinner-container {
   position: fixed;
