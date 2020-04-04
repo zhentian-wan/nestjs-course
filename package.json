@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve  --proxy-config ./proxy.json",
+    "start": "ng serve  --proxy-config ./proxy.json --ssl --ssl-key ./ssl/server.key --ssl-cert ./ssl/server.crt",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -30,6 +30,7 @@
     "body-parser": "^1.18.2",
     "class-validator": "^0.11.0",
     "core-js": "^2.4.1",
+    "csurf": "^1.11.0",
     "express": "^4.16.2",
     "hammerjs": "^2.0.8",
     "moment": "^2.22.2",
